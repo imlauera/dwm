@@ -46,3 +46,31 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+
+win+{b} shows togglebar
+win+{1,2,3,4,5,6,7,8,9} move between tags
+win+shift+[1...9] move window to the selected number tag
+win+ctrl+[1...9] shows clients from others workspaces
+win+shift+{enter} opens a terminal (xfce4-terminal)
+win+shift+{c} kill client
+win+{m} ***float layout*** 
+win+{t} tile layout
+win+{f} ***monocle layout***
+win+{shift+space} toggles floating mode on the focus window
+win+tab toggles between the last two tags used
+win+{i,d} increase/decrease the number of windows in the master section (using tile)
+win+space, it's like alt+tab of layouts, toggles between the last two layouts used
+win+{j,k} swap focus j/k
+win+{enter} toggles client between master and stack
+win+shift+{up,down,m}
+win+{h,l} horizontal resize windows
+win+shift+q quit dwm
+
+win+button1 hold and drag to move the window, win+shift+space to set the float mode off
+win+button2 same as win+shift+space
+win+button3 resize window, hold and drag
+if you're using more than 1 monitor you can use https://dwm.suckless.org/patches/single_tagset/
+
+
+install dwmstatus
