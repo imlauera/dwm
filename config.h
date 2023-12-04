@@ -1,21 +1,24 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
+static const unsigned int gappx     = 5;
 static const char *fonts[]          = { "monospace:size=11" };
 static const char dmenufont[]       = "monospace:size=11";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
+static const char col_black[]       = "#000000";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char col_flour[]        = "#EBE5DA";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_black, col_flour,  col_flour  },
 };
 
 /* tagging */
@@ -72,7 +75,7 @@ static const char *mute[] = { "amixer", "-q", "set", "PCM", "toggle", NULL };
 static const char *brightness_up[] =   { "xbacklight" ,"-inc" ,"10", NULL };
 static const char *brightness_down[]  = { "xbacklight", "-dec", "10", NULL };
 /* xscreensaver lock */
-static const char *screensaver[] = { "xfce4-screensaver-command","-l",NULL };
+static const char *screensaver[] = { "xscreensaver-command","-l",NULL };
 
 
 
