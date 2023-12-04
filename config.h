@@ -68,10 +68,11 @@ static const char *termcmd[]  = { "st","-e","dvtm", NULL };
 // static const char *screenshot[]  = { "scrot","-s",NULL };
 // static const char *screenshot2[]  = { "scrot",NULL };
 
-static const char *upvol[] = { "amixer", "-q", "set", "PCM", "5%+", NULL };
-static const char *downvol[] = { "amixer", "-q", "set", "PCM", "5%-", NULL };
-/* for muting/unmuting */
-static const char *mute[] = { "amixer", "-q", "set", "PCM", "toggle", NULL };
+
+static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%",   NULL };
+static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%",   NULL };
+static const char *mute_vol[] = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
+
 /* brightness up/down */
 static const char *brightness_up[] =   { "xbacklight" ,"-inc" ,"10", NULL };
 static const char *brightness_down[]  = { "xbacklight", "-dec", "10", NULL };
@@ -85,9 +86,9 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|Mod1Mask,              XK_7,      spawn,          {.v = es_keyboard } },
 	{ MODKEY|Mod1Mask,              XK_9,      spawn,          {.v = ru_keyboard } },
-	{ MODKEY|ShiftMask,             XK_Up,     spawn,          {.v = upvol } },
-	{ MODKEY|ShiftMask,             XK_Down,   spawn,          {.v = downvol } },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mute } },
+	{ MODKEY|ShiftMask,             XK_Up,     spawn,          {.v = up_vol } },
+	{ MODKEY|ShiftMask,             XK_Down,   spawn,          {.v = down_vol } },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mute_vol } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = screensaver } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,  	   {.v = brightness_up } },
 	{ MODKEY|ShiftMask,             XK_v,  	   spawn, 	   {.v = brightness_down } },
