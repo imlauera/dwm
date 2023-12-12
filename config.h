@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
@@ -15,11 +15,12 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_black[]       = "#000000";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char col_flour[]        = "#EBE5DA";
+static const char col_red[]        = "#ff0000";
+static const char col_white[]        = "#ffffff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_black, col_flour,  col_flour  },
+	[SchemeSel]  = { col_white, col_red,  col_red  },
 };
 
 /* tagging */
@@ -60,7 +61,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_flour, "-sf", col_black, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_red, "-sf", col_white, NULL };
 
 static const char *es_keyboard[] = { "setxkbmap", "es", NULL };
 static const char *ru_keyboard[] = { "setxkbmap", "ru", NULL };
