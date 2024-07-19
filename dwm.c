@@ -1492,6 +1492,8 @@ sendevent(Client *c, Atom proto)
 	return exists;
 }
 
+
+
 void
 setfocus(Client *c)
 {

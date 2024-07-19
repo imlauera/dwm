@@ -1,11 +1,11 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const unsigned int gappx     = 20;	/* gaps between windows */
+static const unsigned int gappx     = 10;	/* gaps between windows */
 
 static const char *fonts[]          = { "monospace:size=11" };
 static const char dmenufont[]       = "monospace:size=11";
@@ -32,8 +32,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           -1 },
-	{ "Chromium",  NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Gimp",       NULL,       NULL,     0,            0,           -1 },
+	{ "Chromium",   NULL,       NULL,     1 << 2,       0,           -1 },
 };
 
 /* layout(s) */
@@ -78,15 +78,16 @@ static const char *mute_vol[] = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", 
 static const char *brightness_up[] =   { "xbacklight" ,"-inc" ,"10", NULL };
 static const char *brightness_down[]  = { "xbacklight", "-dec", "10", NULL };
 /* xscreensaver lock */
-static const char *screensaver[] = { "xscreensaver-command","-l",NULL };
+static const char *screensaver[] = { "dm-tool","lock",NULL };
 
 
 
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|Mod1Mask,              XK_7,      spawn,          {.v = es_keyboard } },
-	{ MODKEY|Mod1Mask,              XK_9,      spawn,          {.v = ru_keyboard } },
+	{ MODKEY|Mod1Mask,              XK_9,      spawn,          SHCMD("/home/esotericwarfare/dwm/setxkbmap.sh") },
+	//{ MODKEY|Mod1Mask,              XK_7,      spawn,          {.v = es_keyboard } },
+	//{ MODKEY|Mod1Mask,              XK_9,      spawn,          {.v = ru_keyboard } },
 	{ MODKEY|ShiftMask,             XK_Up,     spawn,          {.v = up_vol } },
 	{ MODKEY|ShiftMask,             XK_Down,   spawn,          {.v = down_vol } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mute_vol } },
