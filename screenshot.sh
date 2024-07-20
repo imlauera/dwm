@@ -1,1 +1,1 @@
-scrot '$HOME/pics/%b%d::%H%M%S.png'
+scrot "$HOME/pics/%b%d::%H%M%S.png"
