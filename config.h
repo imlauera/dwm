@@ -7,20 +7,24 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const unsigned int gappx     = 10;	/* gaps between windows */
 
-static const char *fonts[]          = { "monospace:size=11" };
-static const char dmenufont[]       = "monospace:size=11";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_black[]       = "#000000";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_red[]        = "#ff0000";
-static const char col_white[]        = "#ffffff";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=12" };
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=12";
+static const char col_base[]        = "#1e1e2e";
+static const char col_surface[]     = "#313244";
+static const char col_text[]        = "#cdd6f4";
+static const char col_subtext[]     = "#a6adc8";
+static const char col_blue[]        = "#89b4fa";
+static const char col_lavender[]    = "#b4befe";
+static const char col_pink[]        = "#f5c2e7";
+static const char col_mauve[]       = "#cba6f7";
+static const char col_red[]         = "#f38ba8";
+static const char col_green[]       = "#a6e3a1";
+static const char col_yellow[]      = "#f9e2af";
+static const char col_peach[]       = "#fab387";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_white, col_red,  col_red  },
+	/*               fg             bg             border      */
+	[SchemeNorm] = { col_text,      col_base,      col_surface },
+	[SchemeSel]  = { col_base,      col_blue,      col_blue    },
 };
 
 /* tagging */
@@ -61,18 +65,17 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_red, "-sf", col_white, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_base, "-nf", col_subtext, "-sb", col_red, "-sf", col_text, NULL };
 
-static const char *es_keyboard[] = { "setxkbmap", "es", NULL };
-static const char *ru_keyboard[] = { "setxkbmap", "ru", NULL };
-static const char *termcmd[]  = { "st","-e","dvtm", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
+static const char *browsercmd[]  = { "chromium", NULL };
 // static const char *screenshot[]  = { "scrot","-s",NULL };
 // static const char *screenshot2[]  = { "scrot",NULL };
 
 
-static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%",   NULL };
-static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%",   NULL };
-static const char *mute_vol[] = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
+static const char *up_vol[]   = { "amixer", "set", "Master", "5%+", NULL };
+static const char *down_vol[] = { "amixer", "set", "Master", "5%-", NULL };
+static const char *mute_vol[] = { "amixer", "set", "Master", "toggle", NULL };
 
 /* brightness up/down */
 static const char *brightness_up[] =   { "xbacklight" ,"-inc" ,"10", NULL };
@@ -85,9 +88,6 @@ static const char *screensaver[] = { "dm-tool","lock",NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|Mod1Mask,              XK_9,      spawn,          SHCMD("/home/esotericwarfare/dwm/setxkbmap.sh") },
-	//{ MODKEY|Mod1Mask,              XK_7,      spawn,          {.v = es_keyboard } },
-	//{ MODKEY|Mod1Mask,              XK_9,      spawn,          {.v = ru_keyboard } },
 	{ MODKEY|ShiftMask,             XK_Up,     spawn,          {.v = up_vol } },
 	{ MODKEY|ShiftMask,             XK_Down,   spawn,          {.v = down_vol } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mute_vol } },
@@ -103,6 +103,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -117,6 +118,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
