@@ -67,7 +67,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_base, "-nf", col_subtext, "-sb", col_red, "-sf", col_text, NULL };
 
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char *browsercmd[]  = { "chromium", NULL };
 // static const char *screenshot[]  = { "scrot","-s",NULL };
 // static const char *screenshot2[]  = { "scrot",NULL };
